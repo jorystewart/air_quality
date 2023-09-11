@@ -1,0 +1,28 @@
+/*
+
+&i2c1 {
+
+    scd40: scd40@62{
+        compatible = "sensiron,sgp40";
+        reg = < 0x62>;
+        label = "scd40";
+    };
+};
+
+*/
+
+&spi2 {
+
+    cs-gpios = < &gpio0 29 GPIO_ACTIVE_LOW>;
+
+    epaper: epaper@0{
+        compatible = "ultrachip,uc8176";
+        reset-gpios = < &gpio0 3 GPIO_ACTIVE_LOW >;
+        dc-gpios = < &gpio0 28 GPIO_ACTIVE_LOW >;
+        busy-gpios = < &gpio0 2 GPIO_ACTIVE_LOW >;
+        height = < 300 >;
+        width = < 400 >;
+        spi-max-frequency = < 20000000 >;
+        reg = < 0 >;
+    };
+};
